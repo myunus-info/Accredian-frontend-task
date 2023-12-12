@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 // import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Header() {
+  // const authCtx = useContext(Authcontext)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
