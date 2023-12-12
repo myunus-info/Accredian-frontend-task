@@ -4,23 +4,46 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-// import IconButton from '@mui/material/IconButton';
-// import MenuIcon from '@mui/icons-material/Menu';
+import AuthContext from '../contexts/auth-context';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
-  // const authCtx = useContext(Authcontext)
+  const authCtx = useContext(AuthContext);
+
+  const activeState = ({ isActive }) => {
+    return {
+      color: isActive ? '#fff' : 'lightgray',
+      fontWeight: isActive ? '500' : '400',
+      textDecoration: 'none',
+    };
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton> */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Accredian
+            <NavLink to="/" style={{ color: 'inherit', textDecoration: 'none', fontWeight: '600' }}>
+              Accredian
+            </NavLink>
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Logout</Button>
+          {!authCtx.isLoggedIn ? (
+            <Button color="inherit">
+              <NavLink to="/login" style={activeState}>
+                Login
+              </NavLink>
+            </Button>
+          ) : (
+            <Button onClick={authCtx.logout} color="inherit">
+              Logout
+            </Button>
+          )}
+
+          <Button color="inherit">
+            <NavLink to="/signup" style={activeState}>
+              Signup
+            </NavLink>
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
