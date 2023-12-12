@@ -4,7 +4,17 @@ import Layout from '../Layout/Layout';
 const Home = () => {
   return (
     <Layout>
-      <h1>This is homepage</h1>
+      <div
+        style={{
+          backgroundColor: 'lightblue',
+          height: '85vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <h1>This is homepage</h1>
+      </div>
     </Layout>
   );
 };
